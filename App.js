@@ -3,14 +3,14 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import CategoriesScreen from './screens/CategoriesScreen';
+import LoginScreen from './screens/LoginScreen';
+import SignupScreen from './screens/SignupScreen';
 
 const Stack = createNativeStackNavigator();
 
-export default function App() {
+function StackNavigator({children}) {
   return (
-    <NavigationContainer>
-      <StatusBar style="light" />
-      <Stack.Navigator
+    <Stack.Navigator
         screenOptions={{
           headerTitleAlign: 'center', 
           headerStyle: {backgroundColor: "#2b3035"},
@@ -20,14 +20,39 @@ export default function App() {
           }
         }}
       >
-        <Stack.Screen 
-          name='CategoriesScreen'
-          component={CategoriesScreen} 
-          options={{
-            title: 'Categories Screen'
-          }}
-        />
-      </Stack.Navigator>
+      {children}
+    </Stack.Navigator>
+  );
+}
+
+function AuthenticationStack() {
+  return (
+    <StackNavigator>
+      <Stack.Screen name='LoginScreen' component={LoginScreen} />
+      <Stack.Screen name='SignupScreen' component={SignupScreen} />
+    </StackNavigator>
+  );
+};
+
+function AuthenticatedStack() {
+  return (
+    <StackNavigator>
+      <Stack.Screen 
+        name='CategoriesScreen'
+        component={CategoriesScreen} 
+        options={{
+          title: 'Categories Screen'
+        }}
+      />
+    </StackNavigator>
+  );
+};
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <StatusBar style="light" />
+      <AuthenticationStack />
     </NavigationContainer>
   );
 }
