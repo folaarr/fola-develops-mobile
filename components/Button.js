@@ -13,10 +13,12 @@ export default function Button({name}) {
 
 const styles = StyleSheet.create({
     pressable: {
-        
+        maxWidth: 50
     },
     view: {
-        backgroundColor: Colors.blueButton
+        backgroundColor: Colors.blueButton,
+        width: 'auto', 
+        alignItems: 'center'
     }, 
     text: {
         color: Colors.accent400
