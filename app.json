@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "fola-develops-mobile",
+    "name": "FolaDevelops",
     "slug": "fola-develops-mobile",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -9,21 +9,25 @@
     "newArchEnabled": true,
     "splash": {
       "image": "./assets/splash-icon.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "resizeMode": "cover",
+      "backgroundColor": "#2b3035"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "buildNumber": "1.0.0"
     },
     "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "versionCode": 1,
+      "package": "com.folaar.foladevelops"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "542ccf37-9035-4374-80bd-ac42f7024e7d"
+      }
     }
   }
 }
