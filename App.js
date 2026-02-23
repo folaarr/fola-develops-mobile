@@ -40,7 +40,8 @@ function AuthenticationStack() {
         name='LoginScreen' 
         component={LoginScreen} 
         options={{
-          title: 'Log In'
+          title: 'Log In',
+          headerShown: false
         }}  
       />
     </StackNavigator>

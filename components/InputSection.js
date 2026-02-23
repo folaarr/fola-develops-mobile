@@ -16,7 +16,8 @@ const styles = StyleSheet.create({
     },
     text: {
         color: Colors.accent400, 
-        fontFamily: 'noto-sans'
+        fontFamily: 'noto-sans', 
+        marginBottom: 4
     }, 
     textInput: {
         color: Colors.accent400, 
@@ -24,6 +25,7 @@ const styles = StyleSheet.create({
         borderColor: Colors.accent400, 
         fontFamily: 'noto-sans', 
         paddingVertical: 2, 
-        paddingHorizontal: 4
+        paddingHorizontal: 4,
+        borderRadius: 4
     }
 });

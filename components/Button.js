@@ -3,7 +3,7 @@ import { Colors } from "../constants/colors";
 
 export default function Button({name}) {
     return(
-        <Pressable style={styles.pressable}>
+        <Pressable style={({pressed}) => [styles.pressable, pressed && styles.pressed]}>
             <View style={styles.view}>
                 <Text style={styles.text}>{name}</Text>
             </View>
@@ -13,12 +13,18 @@ export default function Button({name}) {
 
 const styles = StyleSheet.create({
     pressable: {
-        maxWidth: 50
+        maxWidth: 75, 
+        marginTop: 8
+    },
+    pressed: {
+        opacity: 0.35
     },
     view: {
         backgroundColor: Colors.blueButton,
-        width: 'auto', 
-        alignItems: 'center'
+        alignItems: 'center', 
+        paddingHorizontal: 8,
+        paddingVertical: 10,
+        borderRadius: 5
     }, 
     text: {
         color: Colors.accent400
