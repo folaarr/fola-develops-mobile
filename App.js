@@ -4,7 +4,10 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import CategoriesScreen from './screens/CategoriesScreen';
 import LoginScreen from './screens/LoginScreen';
-import SignupScreen from './screens/SignupScreen';
+import { useFonts } from 'expo-font';
+import * as SplashScreen from "expo-splash-screen";
+import { useEffect } from 'react';
+import { Colors } from './constants/colors';
 
 const Stack = createNativeStackNavigator();
 
@@ -13,10 +16,15 @@ function StackNavigator({children}) {
     <Stack.Navigator
         screenOptions={{
           headerTitleAlign: 'center', 
-          headerStyle: {backgroundColor: "#2b3035"},
-          headerTintColor: "#E7F2E4",
+          headerStyle: {
+            backgroundColor: Colors.primary400
+          },
+          headerTitleStyle: {
+            fontFamily: "noto-sans"
+          },
+          headerTintColor: Colors.accent400,
           contentStyle: {
-            backgroundColor: "#2b3035"
+            backgroundColor: Colors.primary400
           }
         }}
       >
@@ -28,8 +36,13 @@ function StackNavigator({children}) {
 function AuthenticationStack() {
   return (
     <StackNavigator>
-      <Stack.Screen name='LoginScreen' component={LoginScreen} />
-      <Stack.Screen name='SignupScreen' component={SignupScreen} />
+      <Stack.Screen 
+        name='LoginScreen' 
+        component={LoginScreen} 
+        options={{
+          title: 'Log In'
+        }}  
+      />
     </StackNavigator>
   );
 };
@@ -49,6 +62,22 @@ function AuthenticatedStack() {
 };
 
 export default function App() {
+  const [loaded, error] = useFonts({
+    "noto-sans": require("./assets/fonts/NotoSans.ttf"),
+    "noto-sans-bold": require("./assets/fonts/NotoSans-Bold.ttf"),
+    "dancing-script": require("./assets/fonts/DancingScript.ttf"),
+  });
+  
+  useEffect(() => {
+    if (loaded || error) {
+      SplashScreen.hideAsync();
+    }
+  }, [loaded, error]);
+
+  if (!loaded && !error) {
+    return null;
+  }
+
   return (
     <NavigationContainer>
       <StatusBar style="light" />
