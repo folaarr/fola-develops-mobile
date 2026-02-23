@@ -15,11 +15,11 @@ export default function LoginForm() {
             <InputSection name='Password' secure />
             <View style={styles.prompt}>
                 <Text style={styles.noAccount}>No account? </Text>
-                <Pressable>
+                <Pressable onPress={openLinkHandler}>
                     <Text style={styles.link}>Sign up on website</Text>
                 </Pressable>
             </View>
-            <Button name='Log In' onPress={openLinkHandler} />
+            <Button name='Log In' />
         </View>
     );
 };
