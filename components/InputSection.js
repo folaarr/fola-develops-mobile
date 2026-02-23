@@ -1,5 +1,4 @@
-import { StyleSheet, Text } from "react-native";
-import { TextInput } from "react-native";
+import { StyleSheet, Text, View, TextInput } from "react-native";
 import { Colors } from "../constants/colors";
 
 export default function InputSection({name, secure}) {
@@ -11,7 +10,7 @@ export default function InputSection({name, secure}) {
     );
 };
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create({ 
     text: {
         color: Colors.accent400, 
         fontFamily: 'noto-sans'
