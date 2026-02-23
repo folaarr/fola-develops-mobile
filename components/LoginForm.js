@@ -1,10 +1,11 @@
 import { StyleSheet, Text, TextInput, View } from "react-native";
 import { Colors } from "../constants/colors";
+import InputSection from "./InputSection";
 
 export default function LoginForm() {
     return (
         <View style={styles.loginView}>
-            <TextInput style={{width: 300, height: 100, color: Colors.accent400}} secureTextEntry />
+            <InputSection name='Email' />
         </View>
     );
 };
