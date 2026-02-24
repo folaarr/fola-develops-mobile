@@ -51,6 +51,8 @@ function AuthenticationStack() {
 };
 
 function AuthenticatedStack() {
+  const authCtx = useContext(AuthContext);
+
   return (
     <StackNavigator>
       <Stack.Screen 
@@ -64,6 +66,7 @@ function AuthenticatedStack() {
               size={22} 
               color={tintColor} 
               style={styles.iconButton}
+              onPress={() => {authCtx.logout()}}
             />
           )
         }}

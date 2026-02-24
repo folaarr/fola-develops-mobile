@@ -1,17 +1,17 @@
-import { StyleSheet, View } from "react-native";
+import { Pressable, StyleSheet, View } from "react-native";
 import SimpleLineIcons from '@expo/vector-icons/SimpleLineIcons';
 
-export default function IconButton({name, size, color, style}) {
+export default function IconButton({name, size, color, style, onPress}) {
     return (
-        <View style={style}>
+        <Pressable style={({pressed}) => [style, pressed && styles.pressed]} onPress={onPress}>
             <SimpleLineIcons name={name} size={size} color={color} />
-        </View>
+        </Pressable>
     );
 };
 
 const styles = StyleSheet.create({
-    button: {
-
+    pressed: {
+        opacity: 0.5
     }
 });
 
