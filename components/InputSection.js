@@ -1,11 +1,17 @@
 import { StyleSheet, Text, View, TextInput } from "react-native";
 import { Colors } from "../constants/colors";
 
-export default function InputSection({name, secure}) {
+export default function InputSection({name, secure, onChangeText, value}) {
     return (
         <View style={styles.view}>
             <Text style={styles.text}>{name}</Text>
-            <TextInput secureTextEntry={secure} style={styles.textInput} selectionColor={Colors.accent400} />
+            <TextInput 
+                secureTextEntry={secure} 
+                style={styles.textInput} 
+                selectionColor={Colors.accent400} 
+                onChangeText={onChangeText} 
+                value={value} 
+            />
         </View>
     );
 };

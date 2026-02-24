@@ -3,7 +3,7 @@ import { Colors } from "../constants/colors";
 
 export default function Button({name, onPress}) {
     return(
-        <Pressable style={({pressed}) => [styles.pressable, pressed && styles.pressed]} onPress={onPress}>
+        <Pressable style={({pressed}) => [styles.pressable, pressed && styles.pressed]} onPress={onPress} >
             <View style={styles.view}>
                 <Text style={styles.text}>{name}</Text>
             </View>

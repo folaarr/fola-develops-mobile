@@ -3,7 +3,7 @@ import LoginForm from "../components/LoginForm";
 
 export default function LoginScreen() {
     return (
-        <ImageBackground source={{uri: 'https://res.cloudinary.com/foladevelops/image/upload/v1771852394/formal-meeting_rsmhyt.jpg'}} style={styles.imageBackground}>
+        <ImageBackground source={{uri: 'https://res.cloudinary.com/foladevelops/image/upload/v1771935222/formal-meeting_hyzuwp.jpg'}} style={styles.imageBackground}>
             <View style={styles.formCard}>
                 <LoginForm />
             </View>
