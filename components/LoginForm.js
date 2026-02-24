@@ -5,19 +5,23 @@ import Button from "./Button";
 import * as Linking from 'expo-linking';
 import { login } from "../utils/auth";
 import { useState } from "react";
+import LoadingOverlay from "./LoadingOverlay";
 
 export default function LoginForm() {
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [errorMessage, setErrorMessage] = useState(false)
-    const [error, setError] = useState(false)
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState(false);
+    const [error, setError] = useState(false);
+    const [isAuthenticating, setIsAuthenticating] = useState(false);
 
     async function openLinkHandler() {
         await Linking.openURL('https://foladevelops.onrender.com/sign-up');
     };
 
     async function loginHandler() {
+        setIsAuthenticating(true);
         const feedback = await login(email, password);
+        setIsAuthenticating(false);
         if (feedback.errorResponse) {
             setError(true);
             setErrorMessage(feedback.message);
@@ -33,6 +37,10 @@ export default function LoginForm() {
         setPassword(input);
     };
 
+    if (isAuthenticating) {
+        return <LoadingOverlay message='Logging in...' />
+    }
+
     return (
         <>
             <View style={styles.loginView}>
@@ -45,7 +53,6 @@ export default function LoginForm() {
             </View>
             {error && <Text style={styles.error}>{errorMessage}</Text>}
         </>
-        
     );
 };
 
