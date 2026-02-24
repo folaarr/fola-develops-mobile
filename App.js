@@ -9,6 +9,7 @@ import * as SplashScreen from "expo-splash-screen";
 import { useContext, useEffect } from 'react';
 import { Colors } from './constants/colors';
 import AuthContextProvider, { AuthContext } from './store/auth-context';
+import IconButton from './components/IconButton';
 
 const Stack = createNativeStackNavigator();
 
@@ -56,7 +57,15 @@ function AuthenticatedStack() {
         name='CategoriesScreen'
         component={CategoriesScreen} 
         options={{
-          title: 'Categories Screen'
+          title: 'Categories Screen', 
+          headerRight: ({tintColor}) => (
+            <IconButton 
+              name='logout' 
+              size={22} 
+              color={tintColor} 
+              style={styles.iconButton}
+            />
+          )
         }}
       />
     </StackNavigator>
@@ -106,5 +115,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-  },
+  }, 
+  iconButton: {
+    paddingRight: 7
+  }
 });

@@ -50,8 +50,19 @@ export default function LoginForm() {
     return (
         <>
             <View style={styles.loginView}>
-                <InputSection name='Email' onChangeText={changeEmailHandler} value={email} />
-                <InputSection name='Password' secure onChangeText={changePasswordHandler} value={password} />
+                <InputSection 
+                    name='Email' 
+                    onChangeText={changeEmailHandler} 
+                    value={email} 
+                    keyboardType='email-address'
+                />
+                <InputSection 
+                    name='Password' 
+                    secure 
+                    onChangeText={changePasswordHandler} 
+                    value={password} 
+                    keyboardType='visible-password'
+                />
                 <Pressable onPress={openLinkHandler}>
                     <Text style={styles.link}>No account? Sign up on website</Text>
                 </Pressable>
