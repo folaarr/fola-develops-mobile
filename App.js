@@ -6,8 +6,9 @@ import CategoriesScreen from './screens/CategoriesScreen';
 import LoginScreen from './screens/LoginScreen';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from "expo-splash-screen";
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { Colors } from './constants/colors';
+import AuthContextProvider, { AuthContext } from './store/auth-context';
 
 const Stack = createNativeStackNavigator();
 
@@ -62,6 +63,16 @@ function AuthenticatedStack() {
   );
 };
 
+  function Root() {
+    const authCtx = useContext(AuthContext);
+
+    if (!authCtx.isAuthenticated) {
+      return <AuthenticationStack />
+    } else if (authCtx.isAuthenticated) {
+      return <AuthenticatedStack />
+    }
+  }
+
 export default function App() {
   const [loaded, error] = useFonts({
     "noto-sans": require("./assets/fonts/NotoSans.ttf"),
@@ -80,10 +91,12 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer>
-      <StatusBar style="light" />
-      <AuthenticationStack />
-    </NavigationContainer>
+    <AuthContextProvider>
+      <NavigationContainer>
+        <StatusBar style="light" />
+        <Root />
+      </NavigationContainer>
+    </AuthContextProvider>
   );
 }
 

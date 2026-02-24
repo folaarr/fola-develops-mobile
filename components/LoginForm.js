@@ -4,8 +4,9 @@ import InputSection from "./InputSection";
 import Button from "./Button";
 import * as Linking from 'expo-linking';
 import { login } from "../utils/auth";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import LoadingOverlay from "./LoadingOverlay";
+import { AuthContext } from "../store/auth-context";
 
 export default function LoginForm() {
     const [email, setEmail] = useState('');
@@ -13,6 +14,8 @@ export default function LoginForm() {
     const [errorMessage, setErrorMessage] = useState(false);
     const [error, setError] = useState(false);
     const [isAuthenticating, setIsAuthenticating] = useState(false);
+
+    const authCtx = useContext(AuthContext);
 
     async function openLinkHandler() {
         await Linking.openURL('https://foladevelops.onrender.com/sign-up');
@@ -22,7 +25,10 @@ export default function LoginForm() {
         setIsAuthenticating(true);
         const feedback = await login(email, password);
         setIsAuthenticating(false);
-        if (feedback.errorResponse) {
+        if (feedback.status === 'success') {
+            authCtx.authenticate(feedback.access);
+        };
+        if (feedback.status === 'error') {
             setError(true);
             setErrorMessage(feedback.message);
         };
