@@ -7,7 +7,7 @@ export async function login(email, password) {
             email: email, 
             password: password
         });
-        return response;
+        return response.data;
     } catch (error) {
         console.log(error)
     }
