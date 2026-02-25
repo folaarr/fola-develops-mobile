@@ -44,7 +44,7 @@ export default function LoginForm() {
     };
 
     if (isAuthenticating) {
-        return <LoadingOverlay message='Logging in...' />
+        return <LoadingOverlay message='Logging in...' size='large' />
     }
 
     return (
