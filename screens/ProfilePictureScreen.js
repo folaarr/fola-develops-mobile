@@ -3,18 +3,20 @@ import BackgroundImageView from "../components/BackgroundImageView";
 import LoadingOverlay from "../components/LoadingOverlay";
 import DefaultText from "../components/DefaultText";
 import { ImageStrings } from "../constants/image-strings";
+import { useEffect } from "react";
 
-export default function AIAppScreen() {
+export default function ProfilePictureScreen() {
+    useEffect(() => {}, []);
+
     return (
-        <BackgroundImageView source={{uri: ImageStrings.keyboard}} style={styles.holder}>
-            <DefaultText>A-I</DefaultText>
+        <BackgroundImageView source={{uri: ImageStrings.operator}} style={styles.holder}>
+
         </BackgroundImageView>
     );
 }
 
 const styles = StyleSheet.create({
     holder: {
-        justifyContent: 'center', 
-        alignItems: 'center'
+
     }
 })

@@ -3,7 +3,7 @@ import { Colors } from "../constants/colors";
 import InputSection from "./InputSection";
 import Button from "./Button";
 import * as Linking from 'expo-linking';
-import { login } from "../utils/auth";
+import { login } from "../utils/http";
 import { useContext, useState } from "react";
 import LoadingOverlay from "./LoadingOverlay";
 import { AuthContext } from "../store/auth-context";

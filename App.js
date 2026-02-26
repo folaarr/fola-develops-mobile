@@ -10,8 +10,9 @@ import { useContext, useEffect } from 'react';
 import { Colors } from './constants/colors';
 import AuthContextProvider, { AuthContext } from './store/auth-context';
 import IconButton from './components/IconButton';
-import ECommerceSCreen from './screens/ECommerceScreen';
+import ECommerceScreen from './screens/ECommerceScreen';
 import AIAppScreen from './screens/AIAppScreen';
+import ProfilePictureScreen from './screens/ProfilePictureScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -74,12 +75,25 @@ function AuthenticatedStack() {
         }}
       />
       <Stack.Screen 
+        name='ProfilePictureScreen' 
+        component={ProfilePictureScreen} 
+        options={{
+          title: 'Profile picture'
+        }} 
+      />
+      <Stack.Screen 
         name='ECommerceSCreen' 
-        component={ECommerceSCreen} 
+        component={ECommerceScreen} 
+        options={{
+          title: 'E-commerce screen'
+        }} 
       />
       <Stack.Screen 
         name='AIAppScreen' 
         component={AIAppScreen} 
+        options={{
+          title: 'AI app screen'
+        }} 
       />
     </StackNavigator>
   );

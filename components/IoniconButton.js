@@ -1,12 +1,12 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { Colors } from "../constants/colors";
-import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
-export default function OutlinedButton({name, onPress, icon}) {
+export default function IoniconButton({name, onPress, icon}) {
     return(
         <Pressable style={({pressed}) => [styles.pressable, pressed && styles.pressed]} onPress={onPress} >
             <View style={styles.view}>
-                <MaterialCommunityIcons {...icon} />
+                <Ionicons {...icon} />
                 <Text style={styles.text}>{name}</Text>
             </View>
         </Pressable>
