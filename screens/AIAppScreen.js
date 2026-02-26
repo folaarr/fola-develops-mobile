@@ -6,7 +6,7 @@ import DefaultText from "../components/DefaultText";
 export default function AIAppScreen() {
     return (
         <BackgroundImageView source={{uri: 'https://res.cloudinary.com/foladevelops/image/upload/v1772030201/keyboard_tzi476.jpg'}} style={styles.holder}>
-            <LoadingOverlay message='Build in progress...' />
+            <DefaultText>A-I</DefaultText>
         </BackgroundImageView>
     );
 }
