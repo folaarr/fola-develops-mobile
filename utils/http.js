@@ -12,3 +12,17 @@ export async function login(email, password) {
         console.log(error)
     }
 };
+
+export async function getPictureURL(token) {
+    try {
+        const response = await axios.get('http://192.168.43.129:5000/api-picture', {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
+        console.log(response.data);
+        return response.data;
+    } catch (error) {
+        console.log(error)
+    }
+};
