@@ -13,7 +13,7 @@ import IconButton from './components/IconButton';
 import ECommerceScreen from './screens/ECommerceScreen';
 import AIAppScreen from './screens/AIAppScreen';
 import ProfilePictureScreen from './screens/ProfilePictureScreen';
-import AutofillContextProvider from './store/autofill-context';
+import AutofillContextProvider, { AutofillContext } from './store/autofill-context';
 
 const Stack = createNativeStackNavigator();
 
@@ -31,7 +31,8 @@ function StackNavigator({children}) {
           headerTintColor: Colors.accent400,
           contentStyle: {
             backgroundColor: Colors.primary400
-          }
+          }, 
+          animation: 'slide_from_bottom'
         }}
       >
       {children}
@@ -56,6 +57,7 @@ function AuthenticationStack() {
 
 function AuthenticatedStack() {
   const authCtx = useContext(AuthContext);
+  const autofillCtx = useContext(AutofillContext);
 
   return (
     <StackNavigator>
@@ -63,14 +65,19 @@ function AuthenticatedStack() {
         name='CategoriesScreen'
         component={CategoriesScreen} 
         options={{
-          title: 'Categories Screen', 
+          title: '', 
           headerRight: ({tintColor}) => (
             <IconButton 
               name='logout' 
               size={22} 
               color={tintColor} 
               style={styles.iconButton}
-              onPress={() => {authCtx.logout()}}
+              onPress={() => {
+                authCtx.logout();
+                autofillCtx.setEmail('');
+                autofillCtx.setPassword('');
+                autofillCtx.setAutoFill(false);
+              }}
             />
           )
         }}

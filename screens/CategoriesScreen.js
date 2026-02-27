@@ -10,16 +10,16 @@ export default function CategoriesScreen() {
 
     return (
         <BackgroundImageView style={styles.imageBackground} source={{uri: 'https://res.cloudinary.com/foladevelops/image/upload/v1772024627/using-gadgets_jgikxb.jpg'}}>
-            <View style={styles.view}>
+            {/* <View style={styles.view}> */}
                 <IoniconButton 
                     name='Profile picture' 
                     icon={{name: 'person-circle-outline', size: 16, color: Colors.accent400}} 
                     onPress={() => {navigation.navigate('ProfilePictureScreen')}}  
                 />
-                <OutlinedButton 
+                {/* <OutlinedButton 
                     name='E-store' 
                     icon={{name: 'cart-variant', size: 16, color: Colors.accent400}} 
-                    onPress={() => {navigation.navigate('ECommerceSCreen')}} 
+                    // onPress={() => {navigation.navigate('ECommerceSCreen')}} 
                 />
             </View>
             <View style={styles.view}>
@@ -33,7 +33,7 @@ export default function CategoriesScreen() {
                     icon={{name: 'plus', size: 16, color: Colors.accent400}} 
                     onPress={() => {}} 
                 />
-            </View>
+            </View> */}
         </BackgroundImageView>
     );
 };
