@@ -11,7 +11,9 @@ export default function InputSection({name, secure, onChangeText, value, keyboar
                 selectionColor={Colors.accent400} 
                 onChangeText={onChangeText} 
                 value={value} 
-                keyboardType={keyboardType}
+                keyboardType={keyboardType} 
+                autoCapitalize="none" 
+                autoCorrect={false}  
             />
         </View>
     );

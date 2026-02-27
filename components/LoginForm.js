@@ -61,7 +61,6 @@ export default function LoginForm() {
                     secure 
                     onChangeText={changePasswordHandler} 
                     value={password} 
-                    keyboardType='visible-password'
                 />
                 <Pressable onPress={openLinkHandler}>
                     <Text style={styles.link}>No account? Sign up on website</Text>
