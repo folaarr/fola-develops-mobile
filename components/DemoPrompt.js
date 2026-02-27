@@ -3,10 +3,11 @@ import { StyleSheet, Text } from "react-native";
 import { Colors } from "../constants/colors";
 import DefaultText from "./DefaultText";
 import Button from "./Button";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AutofillContext } from "../store/autofill-context";
 
 export default function DemoPrompt() {
+
     const autofillCtx = useContext(AutofillContext);
 
     function autofillDetails() {

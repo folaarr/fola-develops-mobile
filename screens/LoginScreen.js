@@ -2,9 +2,13 @@ import { ImageBackground, StyleSheet, Text, View, KeyboardAvoidingView, ScrollVi
 import LoginForm from "../components/LoginForm";
 import BackgroundImageView from "../components/BackgroundImageView";
 import DemoPrompt from "../components/DemoPrompt";
+import { useContext } from "react";
+import { AutofillContext } from "../store/autofill-context";
 
 export default function LoginScreen() {
     const height = Dimensions.get('window').height;
+
+    const autofillCtx = useContext(AutofillContext);
 
     return (
         <BackgroundImageView source={{uri: 'https://res.cloudinary.com/foladevelops/image/upload/v1771935222/formal-meeting_hyzuwp.jpg'}} style={styles.imageBackground}>
@@ -12,7 +16,7 @@ export default function LoginScreen() {
                 <KeyboardAvoidingView style={styles.avoiding} behavior='position'>
                     <View style={styles.loginCards}>
                         <LoginForm />
-                        <DemoPrompt />
+                        {!autofillCtx.isLoading && <DemoPrompt />}
                     </View>
                 </KeyboardAvoidingView>
             </ScrollView>

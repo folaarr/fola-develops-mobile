@@ -32,8 +32,10 @@ export default function LoginForm() {
 
     async function loginHandler() {
         setIsAuthenticating(true);
+        autofillCtx.setIsLoading(true);
         const feedback = await login(email, password);
         setIsAuthenticating(false);
+        autofillCtx.setIsLoading(false);
         if (feedback.status === 'success') {
             authCtx.authenticate(feedback.access);
         };
