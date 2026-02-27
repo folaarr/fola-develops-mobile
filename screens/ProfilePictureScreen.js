@@ -13,7 +13,6 @@ export default function ProfilePictureScreen() {
     const authCtx = useContext(AuthContext);
 
     useEffect(() => {
-        console.log('I was opened')
         async function getPicture(token) {
             const feedback = await getPictureURL(token);
             setImageString(feedback.imageURL);
@@ -23,13 +22,19 @@ export default function ProfilePictureScreen() {
 
     return (
         <BackgroundImageView source={{uri: ImageStrings.operator}} style={styles.holder}>
-            <Image source={{uri: !!imageString && imageString}} style={{width: 200, height: 200}} />
+            <Image source={{uri: !!imageString && imageString}} style={styles.image} />
         </BackgroundImageView>
     );
 }
 
 const styles = StyleSheet.create({
     holder: {
-
+        justifyContent: 'center', 
+        alignItems: 'center'
+    }, 
+    image: {
+        width: 200, 
+        height: 200, 
+        borderRadius: 16
     }
 })
