@@ -8,21 +8,32 @@ import { getPictureURL } from "../utils/http";
 import { AuthContext } from "../store/auth-context";
 
 export default function ProfilePictureScreen() {
-    const [imageString, setImageString] = useState()
+    const [imageString, setImageString] = useState('');
+    const [isAuthenticating, setIsAuthenticating] = useState(false);
 
     const authCtx = useContext(AuthContext);
 
     useEffect(() => {
         async function getPicture(token) {
+            setIsAuthenticating(true);
             const feedback = await getPictureURL(token);
+            setIsAuthenticating(false);
             setImageString(feedback.imageURL);
         }
         getPicture(authCtx.token);
     }, []);
 
+    if (isAuthenticating) {
+        return (
+            <BackgroundImageView source={{uri: ImageStrings.operator}} style={styles.holder}>
+                <LoadingOverlay message='Loading...' size='large' />
+            </BackgroundImageView>
+        );
+    }
+
     return (
         <BackgroundImageView source={{uri: ImageStrings.operator}} style={styles.holder}>
-            <Image source={{uri: !!imageString && imageString}} style={styles.image} />
+            <Image source={!!imageString ? {uri: imageString}: null} style={styles.image} />
         </BackgroundImageView>
     );
 }
