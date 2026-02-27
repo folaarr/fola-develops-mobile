@@ -4,10 +4,10 @@ import InputSection from "./InputSection";
 import Button from "./Button";
 import * as Linking from 'expo-linking';
 import { login } from "../utils/http";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import LoadingOverlay from "./LoadingOverlay";
 import { AuthContext } from "../store/auth-context";
-import DemoPrompt from "./DemoPrompt";
+import { AutofillContext } from "../store/autofill-context";
 
 export default function LoginForm() {
     const [email, setEmail] = useState('');
@@ -17,6 +17,14 @@ export default function LoginForm() {
     const [isAuthenticating, setIsAuthenticating] = useState(false);
 
     const authCtx = useContext(AuthContext);
+    const autofillCtx = useContext(AutofillContext);
+
+    useEffect(() => {
+        if (autofillCtx.autoFill) {
+            setEmail(autofillCtx.email); 
+            setPassword(autofillCtx.password);
+        }
+    }, [autofillCtx.autoFill]);
 
     async function openLinkHandler() {
         await Linking.openURL('https://foladevelops.onrender.com/sign-up');

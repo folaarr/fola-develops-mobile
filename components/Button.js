@@ -1,11 +1,11 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { Colors } from "../constants/colors";
 
-export default function Button({name, onPress}) {
+export default function Button({name, onPress, viewStyle, textStyle}) {
     return(
         <Pressable style={({pressed}) => [styles.pressable, pressed && styles.pressed]} onPress={onPress} >
-            <View style={styles.view}>
-                <Text style={styles.text}>{name}</Text>
+            <View style={[styles.view, viewStyle]}>
+                <Text style={[styles.text, textStyle]}>{name}</Text>
             </View>
         </Pressable>
     );
@@ -13,13 +13,13 @@ export default function Button({name, onPress}) {
 
 const styles = StyleSheet.create({
     pressable: {
-        maxWidth: 75, 
         marginTop: 8
     },
     pressed: {
         opacity: 0.35
     },
     view: {
+        maxWidth: 75, 
         backgroundColor: Colors.blueButton,
         alignItems: 'center', 
         paddingHorizontal: 8,

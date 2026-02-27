@@ -13,6 +13,7 @@ import IconButton from './components/IconButton';
 import ECommerceScreen from './screens/ECommerceScreen';
 import AIAppScreen from './screens/AIAppScreen';
 import ProfilePictureScreen from './screens/ProfilePictureScreen';
+import AutofillContextProvider from './store/autofill-context';
 
 const Stack = createNativeStackNavigator();
 
@@ -127,12 +128,14 @@ export default function App() {
   }
 
   return (
-    <AuthContextProvider>
-      <NavigationContainer>
-        <StatusBar style="light" />
-        <Root />
-      </NavigationContainer>
-    </AuthContextProvider>
+    <AutofillContextProvider>
+      <AuthContextProvider>
+        <NavigationContainer>
+          <StatusBar style="light" />
+          <Root />
+        </NavigationContainer>
+      </AuthContextProvider>
+    </AutofillContextProvider>
   );
 }
 
