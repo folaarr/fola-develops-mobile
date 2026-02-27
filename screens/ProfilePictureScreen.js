@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text } from "react-native";
+import { Image, Pressable, StyleSheet, Text } from "react-native";
 import BackgroundImageView from "../components/BackgroundImageView";
 import LoadingOverlay from "../components/LoadingOverlay";
 import DefaultText from "../components/DefaultText";
@@ -6,6 +6,7 @@ import { ImageStrings } from "../constants/image-strings";
 import { useContext, useEffect, useState } from "react";
 import { getPictureURL } from "../utils/http";
 import { AuthContext } from "../store/auth-context";
+import * as Linking from 'expo-linking';
 
 export default function ProfilePictureScreen() {
     const [imageString, setImageString] = useState('');
@@ -29,11 +30,21 @@ export default function ProfilePictureScreen() {
                 <LoadingOverlay message='Loading...' size='large' />
             </BackgroundImageView>
         );
-    }
+    };
+
+    async function openLinkUp() {
+        await Linking.openURL('https://foladevelops.onrender.com/profile-picture');
+    };
 
     return (
         <BackgroundImageView source={{uri: ImageStrings.operator}} style={styles.holder}>
-            <Image source={!!imageString ? {uri: imageString}: null} style={styles.image} />
+            {!!imageString ? 
+                <Image source={{uri: imageString}} style={styles.image} /> 
+                : 
+                <Pressable onPress={openLinkUp} >
+                    <DefaultText style={styles.text} >No profile picture here, add on website?</DefaultText>
+                </Pressable>
+            }
         </BackgroundImageView>
     );
 }
@@ -47,5 +58,8 @@ const styles = StyleSheet.create({
         width: 200, 
         height: 200, 
         borderRadius: 16
+    }, 
+    text: {
+        fontWeight: 'bold'
     }
 })

@@ -19,7 +19,7 @@ export default function CategoriesScreen() {
                 <OutlinedButton 
                     name='E-store' 
                     icon={{name: 'cart-variant', size: 16, color: Colors.accent400}} 
-                    // onPress={() => {navigation.navigate('ECommerceSCreen')}} 
+                    onPress={() => {navigation.navigate('ECommerceSCreen')}} 
                 />
             </View>
             <View style={styles.view}>

@@ -7,6 +7,7 @@ import { login } from "../utils/http";
 import { useContext, useState } from "react";
 import LoadingOverlay from "./LoadingOverlay";
 import { AuthContext } from "../store/auth-context";
+import DemoPrompt from "./DemoPrompt";
 
 export default function LoginForm() {
     const [email, setEmail] = useState('');
@@ -74,6 +75,7 @@ export default function LoginForm() {
 
 const styles = StyleSheet.create({
     loginView: {
+        alignSelf: 'center',
         minWidth: 200,
         borderWidth: 0.3,
         borderColor: Colors.accent400,
