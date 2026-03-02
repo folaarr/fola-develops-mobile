@@ -6,7 +6,7 @@ A cross-platform mobile application built with React Native and Expo for FolaDev
 
 - **Authentication:** Secure login and session management
 - **Navigation:** Navigate between screens
-- **Connection to backend:** Get profile picture from the server
+- **Connection to backend:** Fetch data from server
 - **Custom UI Components:** Reusable buttons, overlays, and input sections
 
 ## Tech Stack
