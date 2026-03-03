@@ -18,7 +18,7 @@ A cross-platform mobile application built with React Native and Expo for FolaDev
 - **Custom React Contexts:** Auth and autofill management
 
 ## Preview
-![App](assets/demo/screen-record.gif) 
+![App](assets/demo/screen_record.gif) 
 
 ## Getting Started
 
